@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Shopcart Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-        <p>Don’t have an account? <a href="/register">Register</a></p>
+    <div class="container">
+        <div class="image-section">
+            <img src="your-image.jpg" alt="E-commerce login illustration">
+        </div>
+        <div class="form-section">
+            <div class="logo">
+                <img src="shopcart-logo.png" alt="Shopcart Logo">
+                <h1>shop<span>cart</span></h1>
+            </div>
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Shopnow</button>
+            </form>
+            <p>Don’t have an account? <a href="/register">Register</a></p>
+        </div>
     </div>
 </body>
 </html>
