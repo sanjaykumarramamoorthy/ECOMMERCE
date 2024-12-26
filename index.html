@@ -5,39 +5,119 @@
   <title>
    Shopcart Login
   </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 0 0 10px;
+        }
+        .login-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-section img {
+            width: 50px;
+            height: auto;
+        }
+        .login-section h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        .login-section form {
+            width: 100%;
+        }
+        .login-section input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-section button {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-section p {
+            font-size: 14px;
+            color: #666;
+        }
+        .login-section a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-section {
+                display: none;
+            }
+            .login-section {
+                border-radius: 10px;
+            }
+        }
+  </style>
  </head>
- <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="bg-white rounded-lg shadow-lg flex max-w-4xl mx-auto">
-   <div class="w-1/2 p-6">
-    <img alt="Woman talking on the phone with shopping boxes and a laptop" class="rounded-l-lg w-full h-full object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/w3FARvEWCSZSONqT1NOlAquxyszTXCtbDF3Wo6jHuvBkRrfJA.jpg" width="600"/>
+ <body>
+  <div class="container">
+   <div class="image-section">
+    <img alt="men sitting on a couch, talking on the phone, surrounded by shopping boxes and a laptop on the table" height="450" src="images/photo.jpg.png" width="450"/>
    </div>
-   <div class="w-1/2 p-8 flex flex-col justify-center">
-    <div class="flex items-center mb-6">
-     <img alt="Shopcart logo" class="mr-2" height="50" src="/images/bucket_706520.png" width="50"/>
-     <h1 class="text-3xl font-bold">
-      shopcart
-     </h1>
-    </div>
-    <h2 class="text-xl font-semibold mb-4">
-     Login
-    </h2>
+   <div class="login-section">
+    <img alt="Shopcart logo" height="50" src="images/bucket_706520.png" width="50"/>
+    <h1>
+     shopcart
+    </h1>
     <form>
-     <div class="mb-4">
-      <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="E-mail" type="email"/>
-     </div>
-     <div class="mb-6">
-      <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Password" type="password"/>
-     </div>
-     <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300" type="submit">
+     <input placeholder="E-mail" type="email"/>
+     <input placeholder="Password" type="password"/>
+     <button type="submit">
       Shopnow
      </button>
     </form>
-    <p class="mt-4 text-center text-gray-600">
+    <p>
      Don't have an account?
-     <a class="text-orange-500" href="#">
+     <a href="#">
       Register
      </a>
     </p>
