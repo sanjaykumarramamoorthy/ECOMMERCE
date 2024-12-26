@@ -1,0 +1,136 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   ShopCart Sign Up
+  </title>
+  
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+            max-width: 100%;
+            display: flex;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #fbb03b;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #e09e2b;
+        }
+        .form-container .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .form-container .login-link a {
+            color: #fbb03b;
+            text-decoration: none;
+        }
+        .form-container .login-link a:hover {
+            text-decoration: underline;
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .logo h1 span {
+            font-weight: 400;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="form-container">
+    <div class="logo">
+     <img alt="ShopCart logo" height="40" src="images/bucket_706520.png" width="40"/>
+     <h1>
+      shop
+      <span>
+       cart
+      </span>
+     </h1>
+    </div>
+    <h1>
+     Create a Account
+    </h1>
+    <input placeholder="Username" type="text"/>
+    <input placeholder="E-mail" type="email"/>
+    <input placeholder="Password" type="password"/>
+    <input placeholder="Confirm Password" type="password"/>
+    <button>
+     Sign-up
+    </button>
+    <div class="login-link">
+     Yes I have an account ?
+     <a href="#">
+      Login
+     </a>
+    </div>
+   </div>
+   <div class="image-container">
+    <img alt="Illustration of a person with a mobile phone displaying a profile" height="400" src="https://storage.googleapis.com/a1aa/image/LUVhsbqJHHLwLNQsb2sucElmoHD6WQdNw2VXeRUQXqExyWfTA.jpg" width="400"/>
+   </div>
+  </div>
+ </body>
+</html>
