@@ -1,29 +1,47 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopcart Login</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="image-section">
-            <img src="your-image.jpg" alt="E-commerce login illustration">
-        </div>
-        <div class="form-section">
-            <div class="logo">
-                <img src="shopcart-logo.png" alt="Shopcart Logo">
-                <h1>shop<span>cart</span></h1>
-            </div>
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                <input type="email" placeholder="E-mail" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit">Shopnow</button>
-            </form>
-            <p>Don’t have an account? <a href="/register">Register</a></p>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Shopcart Login
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white rounded-lg shadow-lg flex max-w-4xl mx-auto">
+   <div class="w-1/2 p-6">
+    <img alt="Woman talking on the phone with shopping boxes and a laptop" class="rounded-l-lg w-full h-full object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/w3FARvEWCSZSONqT1NOlAquxyszTXCtbDF3Wo6jHuvBkRrfJA.jpg" width="600"/>
+   </div>
+   <div class="w-1/2 p-8 flex flex-col justify-center">
+    <div class="flex items-center mb-6">
+     <img alt="Shopcart logo" class="mr-2" height="50" src="/images/bucket_706520.png" width="50"/>
+     <h1 class="text-3xl font-bold">
+      shopcart
+     </h1>
     </div>
-</body>
+    <h2 class="text-xl font-semibold mb-4">
+     Login
+    </h2>
+    <form>
+     <div class="mb-4">
+      <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="E-mail" type="email"/>
+     </div>
+     <div class="mb-6">
+      <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Password" type="password"/>
+     </div>
+     <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300" type="submit">
+      Shopnow
+     </button>
+    </form>
+    <p class="mt-4 text-center text-gray-600">
+     Don't have an account?
+     <a class="text-orange-500" href="#">
+      Register
+     </a>
+    </p>
+   </div>
+  </div>
+ </body>
 </html>
