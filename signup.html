@@ -114,11 +114,12 @@
     <h1>
      Create an account
     </h1>
-    <form action="#">
-        <input placeholder="Username" type="text"/>
-        <input placeholder="E-mail" type="email"/>
-        <input placeholder="Password" type="password"/>
-        <input placeholder="Confirm Password" type="password"/>
+    <form action="#" id="passwordForm" method="POST">
+        <input placeholder="Username" type="text" required/>
+        <input placeholder="E-mail" type="email" required/>
+        <input placeholder="Password" type="password" id="password" name="password"/>
+        <span id="message" class="error"></span>
+        <input placeholder="Confirm Password" type="password" id="confirmPassword" required/>
         <button type="submit">Sign-up</button>
     </form>
     <div class="login-link">
@@ -132,5 +133,33 @@
     <img alt="Illustration of a person with a mobile phone displaying a profile" height="400" src="https://storage.googleapis.com/a1aa/image/LUVhsbqJHHLwLNQsb2sucElmoHD6WQdNw2VXeRUQXqExyWfTA.jpg" width="400"/>
    </div>
   </div>
+  <script>
+    const form = document.getElementById('passwordForm');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', (event) => {
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+
+      // Validation rules
+      const minLength = 8;
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+      if (password.length < minLength || !hasUpperCase || !hasNumber || !hasSpecialChar) {
+        event.preventDefault(); // Prevent form submission
+        message.textContent = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.";
+      } else if (password !== confirmPassword) {
+        event.preventDefault(); // Prevent form submission
+        message.textContent = "Passwords do not match.";
+      } else {
+        message.textContent = "Passwords are valid and match!";
+        message.className = "success";
+      }
+    });
+  </script>
  </body>
 </html>
