@@ -1,0 +1,514 @@
+<html>
+ <head>
+  <title>
+   ShopCart
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .location {
+            display: flex;
+            align-items: center;
+            background-color: #ff9900;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .location i {
+            margin-right: 5px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            width: 300px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+        }
+        .search-bar i {
+            color: #ccc;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info i {
+            margin-right: 5px;
+        }
+        .nav {
+            background-color: #f4c2a1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .main-header {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .main-header span {
+            color: #ff9900;
+        }
+        .sub-header {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        .deals {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .deal-item {
+            text-align: center;
+            width: 30%;
+        }
+        .deal-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .deal-item p {
+            margin: 10px 0;
+        }
+        .deal-item .price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .deal-item .discount {
+            color: #ff0000;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .carousel-indicators span {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        .carousel-indicators .active {
+            background-color: #ff9900;
+        }
+        .today-deals {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+        .deals-section, .review-section {
+            margin-top: 20px;
+        }
+        .deals-section .item, .review-section .item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+        }
+        .deals-section .item img, .review-section .item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .deals-section .item h3, .review-section .item h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+        .deals-section .item .price, .review-section .item .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+        .deals-section .item .discount, .review-section .item .discount {
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: 500;
+        }
+        .deals-section .item .add-to-cart, .review-section .item .add-to-cart {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .review-section .item .rating {
+            margin-top: 10px;
+        }
+        .review-section .item .rating i {
+            color: #ffcc00;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer .language {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .footer .language img {
+            margin-left: 5px;
+        }
+        @media (max-width: 768px) {
+            .deals {
+                flex-direction: column;
+            }
+            .deal-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .deals-section, .review-section {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        @media (min-width: 768px) {
+            .deals-section, .review-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="header">
+   <div class="logo">
+    <img alt="ShopCart logo" height="30" src="https://storage.googleapis.com/a1aa/image/Y1vpfOg29v0VBawfQRY37aCXHdWcGiCYabAP1c3bxa2Qp9enA.jpg" width="30"/>
+    <span>
+     shopcart
+    </span>
+   </div>
+   <div class="location">
+    <i class="fas fa-map-marker-alt">
+    </i>
+    <span>
+     Delhi, 110110
+    </span>
+   </div>
+   <div class="search-bar">
+    <input placeholder="Search" type="text"/>
+    <i class="fas fa-search">
+    </i>
+   </div>
+   <div class="user-info">
+    <i class="fas fa-user-circle">
+    </i>
+    <span>
+     Hendry James
+    </span>
+   </div>
+  </div>
+  <div class="nav">
+   <a href="#">
+    Fresh
+   </a>
+   <a href="#">
+    Today's Deals
+   </a>
+   <a href="#">
+    Mobiles
+   </a>
+   <a href="#">
+    Gift Cards
+   </a>
+   <a href="#">
+    Clothing
+   </a>
+   <a href="#">
+    Health
+   </a>
+   <a href="#">
+    Pet corner
+   </a>
+   <a href="#">
+    Books
+   </a>
+   <a href="#">
+    Beauty
+   </a>
+   <a href="#">
+    Kitchen
+   </a>
+   <a href="#">
+    Bed Room
+   </a>
+   <a href="#">
+    Sport
+   </a>
+   <a href="#">
+    Bags
+   </a>
+  </div>
+  <div class="container">
+   <div class="main-header">
+    We picked some
+    <span>
+     cool things
+    </span>
+    for you!*
+   </div>
+   <div class="sub-header">
+    hot deals for you
+   </div>
+   <div class="deals">
+    <div class="deal-item">
+     <img alt="A smart speaker on a table with the text 'Alexa, switch on the lights.'" height="200" src="https://storage.googleapis.com/a1aa/image/NrkXgcnyxcYeG6i2w1M4861OB4ehfWVQbwvA2eNV8I09627PB.jpg" width="300"/>
+    </div>
+    <div class="deal-item">
+     <img alt="Inalsa Air Fryer Fry-Light-1400W" height="300" src="https://storage.googleapis.com/a1aa/image/eCiYiP9H07yJNq5foxHVfkeTU6xeMK5V4kPOSsiPzqqb1t3fE.jpg" width="300"/>
+     <p>
+      Inalsa Air Fryer Fry-Light-1400W
+     </p>
+     <p class="price">
+      ₹4,627.00
+     </p>
+     <p class="discount">
+      -40% off
+     </p>
+    </div>
+    <div class="deal-item">
+     <img alt="Oneplus Bullets Z2 Bluetooth Wireless" height="300" src="https://storage.googleapis.com/a1aa/image/7eIXVJheuYhnQ0k16Csaq15r0HbFGDBon5UX6EecDnqad79nA.jpg" width="300"/>
+     <p>
+      Oneplus Bullets Z2 Bluetooth Wireless
+     </p>
+     <p class="price">
+      ₹38.00
+     </p>
+     <p class="discount">
+      -26% off
+     </p>
+    </div>
+    <div class="deal-item">
+     <img alt="New Fastrack Reflex Play| AMOLED Display" height="300" src="https://storage.googleapis.com/a1aa/image/vFZeKr0mzjV8Vibky9HGsBSdwRXXgegfcTeVxy6h0cXF727PB.jpg" width="300"/>
+     <p>
+      New Fastrack Reflex Play| AMOLED Display
+     </p>
+     <p class="price">
+      ₹5,689.00
+     </p>
+     <p class="discount">
+      -23% off
+     </p>
+    </div>
+   </div>
+   <div class="carousel-indicators">
+    <span class="active">
+    </span>
+    <span>
+    </span>
+    <span>
+    </span>
+   </div>
+   <div class="today-deals">
+    Today's hot deals
+   </div>
+   <div class="deals-section">
+    <div class="item">
+     <img alt="ZEBRONICS Zeb-Reaper 2.4GHz Wireless Gaming Mouse" height="150" src="https://storage.googleapis.com/a1aa/image/B2bH2kYl26Y5Mxq67sBYGfdh3ouuNP9X8PewC6Sd1nnIre9nA.jpg" width="150"/>
+     <h3>
+      ZEBRONICS Zeb-Reaper 2.4GHz Wireless Gaming Mouse
+     </h3>
+     <div class="price">
+      ₹1,599.00
+     </div>
+     <div class="discount">
+      -40% off
+     </div>
+     <button class="add-to-cart">
+      Add to cart
+     </button>
+    </div>
+    <div class="item">
+     <img alt="Zebronics Zeb-Transformer-k USB Gaming Keyboard RGB LED lighting" height="150" src="https://storage.googleapis.com/a1aa/image/5ccK8zn8SA52Jx3RWijhdUcJlDO2khE0QDnvlNqVP0JwqvfJA.jpg" width="150"/>
+     <h3>
+      Zebronics Zeb-Transformer-k USB Gaming Keyboard RGB LED lighting
+     </h3>
+     <div class="price">
+      ₹999.00
+     </div>
+     <div class="discount">
+      -36% off
+     </div>
+     <button class="add-to-cart">
+      Add to cart
+     </button>
+    </div>
+    <div class="item">
+     <img alt="TP-Link Powered USB Hub with 7 Data Smart Charging Hub" height="150" src="https://storage.googleapis.com/a1aa/image/MJrL1fo1up3lXiVrqS0zjny0aUZFhodWe9Oh8OVefUw2s67PB.jpg" width="150"/>
+     <h3>
+      TP-Link Powered USB Hub with 7 Data Smart Charging Hub
+     </h3>
+     <div class="price">
+      ₹1,999.00
+     </div>
+     <div class="discount">
+      -36% off
+     </div>
+     <button class="add-to-cart">
+      Add to cart
+     </button>
+    </div>
+    <div class="item">
+     <img alt="Scarters Mouse Pad, Deskmat Extended for Work from Home/Office/Gaming" height="150" src="https://storage.googleapis.com/a1aa/image/L45ZxkGXzzZQG5GMUaoFXercRYvcKOQXopr1Vb0OUX1iVfenA.jpg" width="150"/>
+     <h3>
+      Scarters Mouse Pad, Deskmat Extended for Work from Home/Office/Gaming
+     </h3>
+     <div class="price">
+      ₹1,599.00
+     </div>
+     <div class="discount">
+      -30% off
+     </div>
+     <button class="add-to-cart">
+      Add to cart
+     </button>
+    </div>
+    <div class="item">
+     <img alt="HyperX Streamer Starter Pack (HENDU001), Black" height="150" src="https://storage.googleapis.com/a1aa/image/foURfxvuhDvbR0H5ysnhUMNHMXGLYVWvyFNdwwzAftXTW99nA.jpg" width="150"/>
+     <h3>
+      HyperX Streamer Starter Pack (HENDU001), Black
+     </h3>
+     <div class="price">
+      ₹1,159.00
+     </div>
+     <div class="discount">
+      -26% off
+     </div>
+     <button class="add-to-cart">
+      Add to cart
+     </button>
+    </div>
+   </div>
+   <div class="header">
+    <h1>
+     Review your purchase
+    </h1>
+   </div>
+   <div class="review-section">
+    <div class="item">
+     <img alt="2021 Apple iPad Pro with Apple M1 chip (12.9-inch/32.77 cm, Wi-Fi, 128GB)" height="150" src="https://storage.googleapis.com/a1aa/image/KXpK3MQHiCYhFhT4aXrolHtz22uwzp4AKQE2b05qM67yqvfJA.jpg" width="150"/>
+     <h3>
+      2021 Apple iPad Pro with Apple M1 chip (12.9-inch/32.77 cm, Wi-Fi, 128GB)
+     </h3>
+     <div class="price">
+      ₹99,900.00
+     </div>
+     <div class="rating">
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <span>
+       0 rating
+      </span>
+     </div>
+    </div>
+    <div class="item">
+     <img alt="iPhone 14 Pro Max with Apple M1 chip (6.7-inch/17.0 cm, 128GB)" height="150" src="https://storage.googleapis.com/a1aa/image/J9PSIQ3tkKrLL5ZgFggfaD2omZrZxiffyRKXyAIFQoJEW99nA.jpg" width="150"/>
+     <h3>
+      iPhone 14 Pro Max with Apple M1 chip (6.7-inch/17.0 cm, 128GB)
+     </h3>
+     <div class="price">
+      ₹1,39,900.00
+     </div>
+     <div class="rating">
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <i class="far fa-star">
+      </i>
+      <span>
+       0 rating
+      </span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="footer">
+   <div class="container">
+    <a href="#">
+     About us
+    </a>
+    <a href="#">
+     Contact
+    </a>
+    <a href="#">
+     Help
+    </a>
+    <div class="language">
+     <span>
+      English
+     </span>
+     <img alt="Indian flag" height="20" src="https://storage.googleapis.com/a1aa/image/LweJdXcj7wUvH6DfUasfUen2elhZeJVQFBsBu6vZchekhVfenA.jpg" width="20"/>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
