@@ -14,7 +14,7 @@ body {
 .location i {
     margin-right: 5px;
 }
-.header{
+header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -49,23 +49,42 @@ body {
     margin-right: 5px;
 }
 
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #8d8585;
+}
+
 .nav {
-    background-color: #f4c2a1;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ddaf69;
+    overflow: hidden;
 }
 
 .nav a {
     color: black;
     text-decoration: none;
     font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    min-width: max-content;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
-.container {
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px 0;
+.nav:hover{
+    overflow-x: scroll;
+}
+
+.nav a:hover {
+    background-color: white;
+    color: orange;
+    font-weight: bolder;
 }
 
 .main-header {
@@ -140,6 +159,9 @@ body {
     min-height: 360px;
     min-width: 200px;
 }
+.deal-item:hover{
+    cursor: pointer;
+}
 
 .deals-section .item img,
 .review-section .item img {
@@ -187,29 +209,244 @@ body {
     color: #ffcc00;
 }
 
-.footer {
+footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
 
-.footer a {
+footer a {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
 }
 
-.footer .language {
+footer .language {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
 }
 
-.footer .language img {
+footer .language img {
     margin-left: 5px;
 }
+
+.menu-toggle {
+    display: none;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: left;
+}
+
+.menu-toggle:hover {
+    background-color: #555;
+}
+.deal-item{
+    width: fit-content; 
+    padding: 10px 20px;
+    max-width: 300px;
+    margin-inline: 10px;
+}
+
+.deal-item *{
+    text-align: center;
+}
+
+.deal-item img{
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.slider-container {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    background-color: #fff;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease; 
+}
+
+.dot.active {
+    width: 30px; 
+    background-color: orange;
+    border-radius: 20px; 
+}
+
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    background-color: white;
+    border:2px solid black;
+    color: green;
+    font-weight:bold;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .popup.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .add-to-cart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #e68a00;
+  }
+
+  .slide-in-window {
+    position: fixed;
+    top: 0;
+    right: -800px; 
+    width: 600px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .slide-in-window.show {
+    right: 0;
+  }
+  
+  .slide-in-header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+  }
+  
+  .slide-in-header button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .slide-in-content {
+    padding: 20px;
+  }
+    ul{
+      padding: 0;
+    }
+    li{
+      height: 20px;
+      width: 20px;
+      outline: 1px solid;
+      margin: 3px;
+      padding: 0;
+      border-radius: 50%;
+    }
+    .stars{
+      margin-top: 10px;
+    }
+    .stars i{
+      color: orange;
+      margin: 2px;
+    }
+    .share-section .links{
+      background-color: rgb(207, 201, 201);
+      display: flex;
+      justify-content: space-between;
+    }
+    .links a{
+      margin: 5px;
+    }
+    
+    .color-and-quantity{
+      margin-left: 10px;
+    }
+
+    .section-top,.image-section{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .image-section{
+      justify-content: space-between;
+    }
+    .image-section, .section-bottom, .share-section{
+      width: 540px;
+    }
+    .section-top img,.image-section img:not(.image-main img){
+      margin: 5px;
+      border: 1px solid grey;
+      border-radius: 6px;
+    }
+    .quantity{
+      outline: 1px solid;
+      border-radius: 3px;
+      width: fit-content;
+      padding: 5px 10px;
+      margin: 5px;
+    }
+    .add-to-cart{
+      align-self: flex-end;
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: orange;
+      color: white;
+      border-radius: 5px;
+    }
+    .add-to-cart button{
+      border: none;
+      background-color: orange;
+      font-weight: bold;
+    }
+    .delivery-details{
+        margin: 5px;
+    }    
+    .add-to-cart:hover > button{
+        color: white;
+    }
 
 @media (max-width: 500px) {
     .deals {
@@ -236,87 +473,17 @@ body {
     }
 }
 
-.nav-container {
-display: flex;
-flex-direction: column;
-background-color: #8d8585;
-}
-
-.nav {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 10px;
-background-color: #ddaf69;
-overflow: hidden;
-
-}
-.nav:hover{
-overflow-x: scroll;
-}
-
-.nav a {
-text-decoration: none;
-padding: 8px 15px;
-border-radius: 5px;
-min-width: max-content;
-text-align: center;
-transition: background-color 0.3s;
-}
-
-.nav a:hover {
-background-color: white;
-color: orange;
-font-weight: bolder;
-}
-
-.menu-toggle {
-display: none;
-background-color: #444;
-color: white;
-border: none;
-padding: 10px 15px;
-cursor: pointer;
-font-size: 20px;
-text-align: left;
-}
-
-.menu-toggle:hover {
-background-color: #555;
-}
-.deal-item{
-/* border: 1px solid grey; */
-width: fit-content;
-padding: 10px 20px;
-max-width: 300px;
-margin-inline: 10px;
-}
-.deal-item *{
-text-align: center;
-}
-.deals{
-display: flex;
-
-}
-.deal-item img{
-max-width: 250px;
-max-height: 250px;
-}
-.hotdeals{
-display: flex;
-}
-
 @media (max-width:500px){
-.deals-section{
-display: grid;
-grid-template-columns: 1fr 1fr;
+    .deals-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    }
+    .section_two{
+    flex-direction: column;
+    }   
+}
 
-}
-.section_two{
-flex-direction: column;
-}
-
-}
 @media screen and (max-width:500px) {
     .deals-section item{
         min-width: 250px;
@@ -324,48 +491,6 @@ flex-direction: column;
     .deals-section{
         grid-template-columns: 1fr;
     }
+        
+}
     
-}
-
-.slider-container {
-width: 80%;
-overflow: hidden;
-position: relative;
-}
-
-.slider {
-transition: transform 0.5s ease-in-out;
-}
-
-.card {
-background-color: #fff;
-margin: 10px;
-border: 1px solid #ddd;
-border-radius: 10px;
-text-align: center;
-padding: 20px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dots {
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 10px;
-}
-
-.dot {
-width: 10px;
-height: 10px;
-margin: 0 5px;
-background-color: #ccc;
-border-radius: 50%;
-cursor: pointer;
-transition: all 0.5s ease; /* Smooth transition */
-}
-
-.dot.active {
-width: 30px; /* Elongated bar */
-background-color: orange;
-border-radius: 20px; /* Rounded edges for the bar */
-}

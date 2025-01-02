@@ -1,0 +1,666 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cart Summary
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+       body{
+         margin: 0;
+       }
+       .main {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .right-column {
+            width: 40%;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-summary {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-summary h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .cart-summary .cart-header, .cart-summary .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .cart-summary .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .cart-summary .cart-item .details .price {
+            font-size: 14px;
+            color: #888;
+        }
+        .cart-summary .cart-item .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-block: 10px;
+            border-radius: 8px;
+            border: 1px solid grey;
+        }
+        .cart-summary .cart-item .quantity button {
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .cart-summary .cart-item .quantity input {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            padding-block: 10px;
+            margin: 0 10px;
+        }
+
+        .cart-item{
+          padding: 0;
+        }
+        .cart-summary .cart-item .remove {
+            cursor: pointer;
+            text-align: left;
+            margin-top: 5px;
+        }
+        .cart-summary .shipping-options {
+            margin-bottom: 20px;
+        }
+        .cart-summary .shipping-options label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+        .cart-summary .shipping-options input {
+            margin-right: 10px;
+        }
+        .cart-summary .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .cart-summary .total .price {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .cart-summary .checkout {
+            background-color: #f7c08a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .coupon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            
+        }
+        .coupon input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .coupon button {
+            background-color: #f7c08a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .right-column {
+                width: 90%;
+            }
+            .cart-summary .cart-header, .cart-summary .cart-item {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+            .cart-summary .cart-header .product, .cart-summary .cart-item .product {
+                grid-column: span 2;
+            }
+        }
+    
+    .add-to-cart-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .add-to-cart-btn:hover {
+      background-color: #e68a00;
+    }
+    .slide-in-window{
+      width: 600px;
+    }
+
+    .slide-in-header {
+      display: flex;
+      justify-content: flex-end;
+      background-color: white;
+    }
+    
+    .slide-in-header button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    .slide-in-content {
+      padding: 20px;
+    }
+      ul{
+        padding: 0;
+      }
+      li{
+        height: 20px;
+        width: 20px;
+        outline: 1px solid;
+        margin: 3px;
+        padding: 0;
+        border-radius: 50%;
+      }
+      .stars{
+        margin-top: 10px;
+      }
+      .stars i{
+        color: orange;
+        margin: 2px;
+      }
+      .share-section .links{
+        background-color: rgb(207, 201, 201);
+        display: flex;
+        justify-content: space-between;
+      }
+      .links a{
+        margin: 5px;
+      }
+      
+      .color-and-quantity{
+        margin-left: 10px;
+      }
+
+      .section-top,.image-section{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .image-section{
+        justify-content: space-between;
+      }
+      .image-section, .section-bottom, .share-section{
+        width: 540px;
+      }
+      .section-top img,.image-section img:not(.image-main img){
+        margin: 5px;
+        border: 1px solid grey;
+        border-radius: 6px;
+      }
+      .cart-item .quantity{
+        border-radius: 3px;
+        width: fit-content;
+        padding: 5px 10px;
+        margin: 5px;
+      }
+      .add-to-cart{
+        align-self: flex-end;
+        margin: 20px;
+        padding: 10px 20px;
+        background-color: orange;
+        color: white;
+        border-radius: 5px;
+      }
+      .add-to-cart button{
+        border: none;
+        background-color: orange;
+        font-weight: bold;
+      }
+      .delivery-details{
+          margin: 5px;
+      }    
+      .add-to-cart:hover > button{
+          color: white;
+      }
+      .location{
+          background-color: orange;
+          padding: 10px 20px;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          margin-inline: 10px;
+      }
+      .location i {
+          margin-right: 5px;
+      }
+      header{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+      .search-bar {
+          display: flex;
+          align-items: center;
+          background-color: white;
+          border-radius: 8px;
+          padding: 8px 16px;
+          min-width: 500px;
+          outline: 1px solid rgba(0,0,0,0.4);
+      }
+
+      .search-bar input {
+          border: none;
+          outline: 1px none;
+          width: 100%;
+          padding: 5px;
+      }
+
+      .search-bar i {
+          color: grey;
+      }
+
+      .user-info {
+          display: flex;
+          align-items: center;
+      }
+
+      .user-info i {
+          margin-right: 5px;
+      }
+
+      .nav-container {
+          display: flex;
+          flex-direction: column;
+          background-color: #8d8585;
+      }
+
+      .nav {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 10px 20px;
+          gap: 10px;
+          padding: 10px;
+          background-color: #ddaf69;
+          overflow: hidden;
+      }
+
+      .nav a {
+          color: black;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 8px 15px;
+          border-radius: 5px;
+          min-width: max-content;
+          text-align: center;
+          transition: background-color 0.3s;
+      }
+
+      .nav:hover{
+          overflow-x: scroll;
+      }
+
+      .nav a:hover {
+          background-color: white;
+          color: orange;
+          font-weight: bolder;
+      }
+
+      footer {
+          background-color: #333;
+          color: #fff;
+          padding: 20px 0;
+          text-align: center;
+      }
+
+      footer a {
+          color: #fff;
+          margin: 0 10px;
+          text-decoration: none;
+      }
+
+      footer .language {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+      }
+
+      footer .language img {
+          margin-left: 5px;
+      }
+
+
+  </style>
+ </head>
+ <body>
+  <div class="header">
+    <header>
+      <div class="header_left" style="margin: 5px 10px;">
+          <div class="logo" style="display: flex;">
+              <img src="images/bucket_706520.png" alt="shopcart" height="40" width="35" style="margin: 10px;">
+              <h2 style="margin: 20px 0px;">
+                  Shop<span style="font-weight:normal">cart</span>
+              </h2>
+          </div>
+          <div class="location">
+              <i class="fas fa-map-marker-alt">
+              </i>
+              <span>
+                  Delhi, 110110
+              </span>
+          </div>
+      </div>
+    <div class="section_two" style="display: flex;flex-grow: 1; justify-content: flex-end;">
+      <div class="search-bar" style="margin-inline: 10px;">
+          <input placeholder="Search" type="text" />
+          <i class="fas fa-search">
+          </i>
+      </div>
+      <div class="user-info" style="margin-inline: 20px; font-size: 1.2rem;">
+          <i class="fas fa-user-circle">
+          </i>
+          <span>
+              Ratan tata
+          </span>
+      </div>
+  </div>
+  </header>
+  <div class="nav">
+      <a href="#">Fresh</a>
+      <a href="#">Today's offers</a>
+      <a href="#">Mobiles</a>
+      <a href="#">Gift Cards</a>
+      <a href="#">Clothing</a>
+      <a href="#">Health</a>
+      <a href="#">Pet corner</a>
+      <a href="#">Books</a>
+      <a href="#">Beauty</a>
+      <a href="#">Kitchen</a>
+      <a href="#">Bed Room</a>
+      <a href="#">Sport</a>
+      <a href="#">Bags</a>
+  </div>
+  </div>
+  <div class="main">
+  <div class="preview-section" style="width: 480px; height: 675px;">
+    <div class="slide-in-window" id="slide-in">
+      <div class="slide-in-content">
+          <div class="section-top">
+              <div class="images">
+                <img src="images/headphones/hp 1 (1).png" alt="" height="80" style="outline: 1px solid;" id="image-s1">
+                <img src="images/headphones/hp 1 (3).png" alt="" height="80" style="outline: 1px solid;" id="image-s2">
+              </div>
+                <div class="item-details">
+                  <h2 id="itemName">pTron Tangentbeat in-Ear Bluetooth Wireless Headphones with Mic, Dual Pairing, Fast Charging, Magnetic Buds, Voice Assist & IPX4 Wireless Neckband (Dark Blue)</h2>
+                  <a href="https://ptron.in/">Visit the pTron store</a>
+                  <div class="rating" style="display: flex; align-items: center; margin-top: 10px;">
+                    <div class="stars" style="display: flex; margin-right: 10px;">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="stars-count" style="padding: 3px 6px; background-color: orange; width: fit-content; border-radius: 3px;">
+                      4.3 <i class="fa fa-star" aria-hidden="true" style="color: black;"></i>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="image-section">
+                <div class="images" style="display: flex; flex-direction: column;">
+                  <img src="images/headphones/hp 1 (2).png" alt="" height="80" id="image-s3">
+                  <img src="images/headphones/hp 1 (4).png" alt="" height="80" id="image-s4">
+                </div>
+                <div class="image-main" style="margin-right: 80px;">
+                  <img src="images/headphone.webp" alt="" height="200" id="itemImage">
+                </div>
+            </div>
+            <div class="section-bottom" style="display: flex; justify-content: space-between;">
+                <div class="color-and-quantity">
+                  Color : <b>Black</b>
+                  <ul style="list-style-type: none; display: flex;">
+                    <li style="background-color: black;"></li>
+                    <li style="background-color: orange;"></li>
+                    <li style="background-color: blueviolet;"></li>
+                    <li style="background-color: red;"></li>
+                  </ul>
+                  <div class="quantity">
+                    <span style="margin: 5px;">+</span>1 <span style="margin: 5px;">-</span>
+                  </div>
+                </div>
+                <div class="add-to-cart">
+                  <button>Add to cart</button>
+                </div>
+            </div>
+            <div class="share-section" style="margin-top: 10px;">
+              <div class="links">
+                <a href="">Compare</a>
+                <a href="">Ask a question</a>
+                <a href="">Share</a>
+              </div>
+              <div class="delivery-details">
+                  <b>Estimated delivery: </b>July 30 - Aug 06 <br>
+                  <b>Free shipping & returns:  </b>On all orders above $75
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-column" style="min-width: 470px;max-width: 470px; max-height: 540px; margin-right: 50px; align-self: flex-start;margin-top: 20px;">
+   <div class="cart-summary">
+    <div class="cart-header">
+     <div class="product">
+      Product
+     </div>
+     <div class="quantity">
+      Quantity
+     </div>
+     <div class="price">
+      Price
+     </div>
+     <div class="subtotal1">
+      Subtotal
+     </div>
+    </div>
+    <hr>
+    <div class="cart-item" style="background-color: rgb(194, 191, 191); padding-block:10px;border-radius: 5px;">
+     <div class="product" style="display: flex; justify-content: center; align-items: center;">
+      <img alt="Product image of Oneplus Bullets Z2 Bluetooth Wireless in Ear Earphones" height="50" src="https://storage.googleapis.com/a1aa/image/C7TtzRtjxyIfd6NoNEa0rRjb4f3bQ5eRiTggefOreR2FtuLAF.jpg" width="50"/>
+      <div class="details" style="height: 50px;">
+        <span style="margin-bottom: 3px;"><b>Tray table</b></span>
+        <br>
+        <span style="margin-bottom: 3px;">Color: black</span>
+        <br>
+        <span class="remove">X Remove</span>
+      </div>
+     </div>
+     <div class="quantity" style="background-color: white; margin-right: 10px;">
+      <button class="decrement" style="background-color: white;">
+       -
+      </button>
+      <input class="quantity-input" type="text" value="1"/>
+      <button class="increment" style="background-color: white;">
+       +
+      </button>
+     </div>
+     <div class="price">
+      $19.00
+     </div>
+     <div class="subtotal">
+      $19.00
+     </div>
+    </div>
+    <div class="shipping-options" style="outline: 1px solid grey;padding: 10px 20px; border-radius: 10px;">
+      <h2>
+        Cart summary
+       </h2>
+     <label>
+      <input checked="" name="shipping" type="radio" value="0"/>
+      Free shipping $0.00
+     </label>
+     <label>
+      <input name="shipping" type="radio" value="15"/>
+      Express shipping +$15.00
+     </label>
+     <label>
+      <input name="shipping" type="radio" value="21"/>
+      Pick Up $21.00
+     </label>
+     <div class="total">
+      <span>
+       Subtotal
+      </span>
+      <span class="price subtotal">
+       $19.00
+      </span>
+     </div>
+     <div class="total">
+      <span>
+       Total
+      </span>
+      <span class="price total-price">
+       $19.00
+      </span>
+     </div>
+     <button class="checkout" style="background-color: orange;">
+      Checkout
+     </button>
+    </div>
+    </div>
+    <div class="coupon" style="width: 95%;margin-left: 15px;">
+      <input class="coupon-input" placeholder="Coupon Code" type="text"/>
+      <button class="apply-coupon" style="background-color: orange;">
+       Apply
+      </button>
+   </div>
+  </div>
+</div>
+  <footer style="display: flex;justify-content: space-between; align-items: center;">
+    <h2 style="margin-left: 30px; ">
+        Shop<span style="font-weight:normal">cart</span>
+    </h2>
+    <div class="container_links" style="display: flex;">
+        <a href="#">About us</a>
+        <a href="#">Contact</a>
+        <a href="#">Help</a>
+    </div>
+    <div class="language" style="margin-right: 30px;">
+        <span>
+            English
+        </span>
+        <img alt="Indian flag" height="20" src="images/indian flag.jpg.webp" width="20" />
+    </div>
+</footer>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+            const decrementButtons = document.querySelectorAll('.decrement');
+            const incrementButtons = document.querySelectorAll('.increment');
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            const removeButtons = document.querySelectorAll('.remove');
+            const shippingOptions = document.querySelectorAll('input[name="shipping"]');
+            const subtotalElement = document.querySelector('.subtotal');
+            const totalPriceElement = document.querySelector('.total-price');
+            const applyCouponButton = document.querySelector('.apply-coupon');
+            const couponInput = document.querySelector('.coupon-input');
+
+            let subtotal = 19.00;
+            let shippingCost = 0;
+            let discount = 0;
+
+            function updateTotal() {
+                const total = subtotal + shippingCost - discount;
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalPriceElement.textContent = `$${total.toFixed(2)}`;
+            }
+
+            decrementButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    let quantity = parseInt(quantityInputs[index].value);
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityInputs[index].value = quantity;
+                        subtotal -= 19.00;
+                        updateTotal();
+                    }
+                });
+            });
+
+            incrementButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    let quantity = parseInt(quantityInputs[index].value);
+                    quantity++;
+                    quantityInputs[index].value = quantity;
+                    subtotal += 19.00;
+                    updateTotal();
+                });
+            });
+
+            removeButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    quantityInputs[index].value = 0;
+                    subtotal = 0;
+                    updateTotal();
+                });
+            });
+
+            shippingOptions.forEach(option => {
+                option.addEventListener('change', () => {
+                    shippingCost = parseFloat(option.value);
+                    updateTotal();
+                });
+            });
+
+            applyCouponButton.addEventListener('click', () => {
+                const couponCode = couponInput.value.trim();
+                if (couponCode === 'DISCOUNT10') {
+                    discount = 10.00;
+                } else {
+                    discount = 0;
+                }
+                updateTotal();
+            });
+
+            updateTotal();
+        });
+  </script>
+ </body>
+</html>
