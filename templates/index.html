@@ -5,7 +5,6 @@
   <title>
    Shopcart Login
   </title>
- 
   <style>
    body {
             margin: 0;
@@ -101,17 +100,17 @@
  <body>
   <div class="container">
    <div class="image-section">
-    <img alt="men sitting" height="450" src="images/photo.jpg.png" width="450"/>
+    <img alt="men sitting" height="450" src="../static/images/photo.jpg.png" width="450"/>
    </div>
    <div class="login-section">
     <div class="logo" style="display: flex; margin-bottom: 30px; align-items: center;">
-        <img alt="Shopcart logo" height="50" src="images/bucket_706520.png" width="50"/>
+        <img alt="Shopcart logo" height="50" src="../static/images/bucket_706520.png" width="50"/>
     <h1 style="margin: 20px;">
      Shop<span style='font-weight:normal'>cart</span>
     </h1>
     </div>
     <h3 style="text-align: center;margin-top:0; font-size: 1.5rem;">Login</h3>
-    <form>
+    <form action="{{ url_for('login_user') }}" method="POST">
      <input placeholder="E-mail" type="email" required/>
      <input placeholder="Password" type="password" required/>
      <button type="submit">
@@ -120,9 +119,7 @@
     </form>
     <p>
      Don't have an account?
-     <a href="signup.html">
-      Register
-     </a>
+     <a href="{{ url_for('signup') }}">Register</a>
     </p>
    </div>
   </div>

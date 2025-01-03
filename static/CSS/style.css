@@ -436,7 +436,7 @@ transition: transform 0.5s ease-in-out;
       color: white;
       border-radius: 5px;
     }
-    .add-to-cart button{
+    .add-to-cart input{
       border: none;
       background-color: orange;
       font-weight: bold;

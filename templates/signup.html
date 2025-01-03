@@ -103,7 +103,7 @@
   <div class="container">
    <div class="form-container">
     <div class="logo">
-     <img alt="ShopCart logo" height="40" src="images/bucket_706520.png" width="40"/>
+     <img alt="ShopCart logo" height="40" src="{{ url_for('static', filename='images/bucket_706520.png') }}" width="40"/>
      <h1>
       shop
       <span>
@@ -114,17 +114,26 @@
     <h1>
      Create an account
     </h1>
-    <form action="#" id="passwordForm" method="POST">
-        <input placeholder="Username" type="text" required/>
-        <input placeholder="E-mail" type="email" required/>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div style="margin: 10px;">
+        {% for message in messages %}
+            <span>{{ message }}</span>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('signup_user') }}" id="passwordForm" method="POST">
+        <input placeholder="Username" type="text" name="username" required/>
+        <input placeholder="E-mail" type="email" name='email' required/>
         <input placeholder="Password" type="password" id="password" name="password"/>
         <span id="message" class="error"></span>
         <input placeholder="Confirm Password" type="password" id="confirmPassword" required/>
-        <button type="submit">Sign-up</button>
+        <button type="submit">Sign up</button>
     </form>
     <div class="login-link">
      Already have an account?
-     <a href="index.html">
+     <a href="{{url_for('login')}}">
       Login
      </a>
     </div>
@@ -142,18 +151,16 @@
     form.addEventListener('submit', (event) => {
       const password = passwordInput.value;
       const confirmPassword = confirmPasswordInput.value;
-
-      // Validation rules
       const minLength = 8;
       const hasUpperCase = /[A-Z]/.test(password);
       const hasNumber = /\d/.test(password);
       const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
       if (password.length < minLength || !hasUpperCase || !hasNumber || !hasSpecialChar) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); 
         message.textContent = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.";
       } else if (password !== confirmPassword) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); 
         message.textContent = "Passwords do not match.";
       } else {
         message.textContent = "Passwords are valid and match!";
