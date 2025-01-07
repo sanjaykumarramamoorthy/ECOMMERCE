@@ -21,31 +21,28 @@ create_user_table()
 
 browser_opened = False
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('index.html')
+    if request.method == 'POST':
+        username = request.form.get('email')
+        password = request.form.get('password')
 
-@app.route('/login', methods=['POST'])
-def login_user():
-    username = request.form.get('username')
-    password = request.form.get('password')
-
-    if not username or not password:
-        flash('Both fields are required!')
-        return redirect(url_for('login'))
-
-    with sqlite3.connect('shopcart.db') as conn:
-        cursor = conn.cursor()
-        cursor.execute('SELECT password FROM users WHERE username = ?', (username,))
-        user = cursor.fetchone()
-
-        if user and check_password_hash(user[0], password):
-            session['username'] = username
-            return redirect(url_for('home'))
-        else:
-            flash('Invalid username or password!')
+        if not username or not password:
+            flash('Both fields are required!')
             return redirect(url_for('login'))
-        
+
+        with sqlite3.connect('shopcart.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT username,password FROM users WHERE email = ?', (username,))
+            user = cursor.fetchone()
+            if user and check_password_hash(user[1], password):
+                session['username'] = user[0]
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid username or password!')
+                return redirect(url_for('login'))
+
+    return render_template('index.html')        
 @app.route('/')
 def signup():
     return render_template('signup.html')
@@ -61,7 +58,6 @@ def signup_user():
         return redirect(url_for('signup'))
     
     hashed_password = generate_password_hash(password)
-
     try:
         with sqlite3.connect('shopcart.db') as conn:
             cursor = conn.cursor()

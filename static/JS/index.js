@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const decrementButtons = document.querySelectorAll('.decrement');
+const decrementButtons = document.querySelectorAll('.decrement');
     const incrementButtons = document.querySelectorAll('.increment');
     const quantityInputs = document.querySelectorAll('.quantity-input');
     const removeButtons = document.querySelectorAll('.remove');

@@ -47,8 +47,7 @@ closeBtn.addEventListener('click', () => {
   let currentIndex = 0;
   
   function showSlide(index) {
-      slider.style.transform = `translateX(-${index * 33}%)`;
-  
+      slider.style.transform = `translateX(-${index * 33}%)`;  
       dots.forEach(dot => dot.classList.remove('active'));
       setTimeout(() => {
           dots[index].classList.add('active');

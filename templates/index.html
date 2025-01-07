@@ -110,9 +110,18 @@
     </h1>
     </div>
     <h3 style="text-align: center;margin-top:0; font-size: 1.5rem;">Login</h3>
-    <form action="{{ url_for('login_user') }}" method="POST">
-     <input placeholder="E-mail" type="email" required/>
-     <input placeholder="Password" type="password" required/>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: red;list-style: none;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('login') }}" method="POST">
+     <input placeholder="E-mail" type="email" name = 'email'required/>
+     <input placeholder="Password" type="password" name="password" required/>
      <button type="submit">
       Shop now
      </button>
