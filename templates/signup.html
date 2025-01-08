@@ -121,8 +121,8 @@
             <span>{{ message }}</span>
         {% endfor %}
         </div>
-    {% endif %}
-    {% endwith %}
+        {% endif %}
+        {% endwith %}
     <form action="{{ url_for('signup_user') }}" id="passwordForm" method="POST">
         <input placeholder="Username" type="text" name="username" required/>
         <input placeholder="E-mail" type="email" name='email' required/>
