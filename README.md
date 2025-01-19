@@ -9,7 +9,7 @@ This project requires python (latest version) installed in you system
 - Windows - '''python app.py'''
 - Linux - '''python3 app.py'''
 
-###register your account to start shopping
+### register your account to start shopping
 
 features:
  - add items dynamically from the slideing items section
